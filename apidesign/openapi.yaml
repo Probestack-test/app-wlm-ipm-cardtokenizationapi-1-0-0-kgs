@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: cardtokenizationapi-1-0-0
+  version: 1.0.0
+  description: Operational baseline generated from observed Kong Konnect configuration.
+servers:
+- url: https://vault.pci.aldermoor.example/v1
+paths:
+  /pci/tokens/1.0.0/tokens:
+    post:
+      operationId: postPciTokens100Tokens_79311d8a
+      summary: cardtokenizationapi-1-0-0--posttokens
+      description: Inferred from Kong routing. Request and response business schemas are not observable.
+      x-kong-route-ids:
+      - 032df9a3-e6ce-4d7e-bdba-380fca6886b9
+      x-kong-plugin-summary:
+      - acl
+      - jwt
+      - rate-limiting
+      - request-transformer
+      responses:
+        default:
+          description: Runtime response semantics are not observable from Kong configuration.
+x-kong-source:
+  serviceId: 01a64e23-57cb-4f8f-8cef-d42d1d57acac
+  snapshotFingerprint: 07cea5136085320a7d1a760a482942009d20bec1206588859bbf39aee15301c0
+  controlPlaneId: edb363b5-777a-445c-a190-5ca0d53c0c12
+x-kong-unmapped-routes:
+- routeId: 69e8fc3b-a6f8-460d-9dc7-efc2d046d290
+  routeName: cardtokenizationapi-1-0-0--deletetokens-token
+  reasons:
+  - REGEX_OR_UNSUPPORTED_PATH
+- routeId: 732839f8-cf95-426f-b74a-749f216debba
+  routeName: cardtokenizationapi-1-0-0--gettokens-token
+  reasons:
+  - REGEX_OR_UNSUPPORTED_PATH
+- routeId: 78f5a444-f85f-4ff6-8202-9a0bb6a6119a
+  routeName: cardtokenizationapi-1-0-0--posttokens-token-detokenize
+  reasons:
+  - REGEX_OR_UNSUPPORTED_PATH
