@@ -1,0 +1,573 @@
+_format_version: '3.0'
+_transform: true
+services:
+- connect_timeout: 60000
+  created_at: 1789395504
+  enabled: true
+  host: vault.pci.aldermoor.example
+  id: 01a64e23-57cb-4f8f-8cef-d42d1d57acac
+  name: cardtokenizationapi-1-0-0
+  path: /v1
+  port: 443
+  protocol: https
+  read_timeout: 60000
+  retries: 5
+  source: KONG_KONNECT
+  tags:
+  - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+  - migrated-by:forgeshift-wso2-migrator
+  - pci
+  - tokenization
+  - vault
+  updated_at: 1789395504
+  write_timeout: 60000
+  routes:
+  - created_at: 1789395504
+    https_redirect_status_code: 426
+    id: 032df9a3-e6ce-4d7e-bdba-380fca6886b9
+    methods:
+    - POST
+    name: cardtokenizationapi-1-0-0--posttokens
+    path_handling: v0
+    paths:
+    - /pci/tokens/1.0.0/tokens
+    preserve_host: false
+    protocols:
+    - https
+    regex_priority: 0
+    request_buffering: true
+    response_buffering: true
+    service:
+      id: 01a64e23-57cb-4f8f-8cef-d42d1d57acac
+    source: KONG_KONNECT
+    strip_path: false
+    tags:
+    - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+    - migrated-by:forgeshift-wso2-migrator
+    - pci
+    - tokenization
+    - vault
+    - wso2-resource:_tokens
+    - wso2-verb:POST
+    updated_at: 1789395504
+    plugins:
+    - config:
+        add:
+          body: []
+          headers: []
+          querystring: []
+        append:
+          body: []
+          headers: []
+          querystring: []
+        remove:
+          body: []
+          headers: []
+          querystring: []
+        rename:
+          body: []
+          headers: []
+          querystring: []
+        replace:
+          body: []
+          headers: []
+          querystring: []
+          uri: /v1/tokens
+      created_at: 1789395504
+      enabled: true
+      id: 1ca699e9-1316-4a48-b4b8-9e7a3f9c09c1
+      name: request-transformer
+      protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+      route:
+        id: 032df9a3-e6ce-4d7e-bdba-380fca6886b9
+      source: KONG_KONNECT
+      tags:
+      - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+      - migrated-by:forgeshift-wso2-migrator
+      - pci
+      - tokenization
+      - vault
+      updated_at: 1789395504
+    - config:
+        allow:
+        - wso2-api:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+        always_use_authenticated_groups: false
+        hide_groups_header: true
+        include_consumer_groups: false
+      created_at: 1789395504
+      enabled: true
+      id: acda2022-7c95-47c9-9474-566ec2b365d0
+      name: acl
+      protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+      route:
+        id: 032df9a3-e6ce-4d7e-bdba-380fca6886b9
+      source: KONG_KONNECT
+      tags:
+      - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+      - migrated-by:forgeshift-wso2-migrator
+      - pci
+      - tokenization
+      - vault
+      updated_at: 1789395504
+  - created_at: 1789395504
+    https_redirect_status_code: 426
+    id: 69e8fc3b-a6f8-460d-9dc7-efc2d046d290
+    methods:
+    - DELETE
+    name: cardtokenizationapi-1-0-0--deletetokens-token
+    path_handling: v0
+    paths:
+    - ~/pci/tokens/1\.0\.0/tokens/(?<token>[^/]+)$
+    preserve_host: false
+    protocols:
+    - https
+    regex_priority: 0
+    request_buffering: true
+    response_buffering: true
+    service:
+      id: 01a64e23-57cb-4f8f-8cef-d42d1d57acac
+    source: KONG_KONNECT
+    strip_path: false
+    tags:
+    - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+    - migrated-by:forgeshift-wso2-migrator
+    - pci
+    - tokenization
+    - vault
+    - wso2-resource:_tokens_{token}
+    - wso2-verb:DELETE
+    updated_at: 1789395504
+    plugins:
+    - config:
+        allow:
+        - wso2-api:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+        always_use_authenticated_groups: false
+        hide_groups_header: true
+        include_consumer_groups: false
+      created_at: 1789395504
+      enabled: true
+      id: d8d8c69e-6cff-45b1-bf6b-f66b43f09bcd
+      name: acl
+      protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+      route:
+        id: 69e8fc3b-a6f8-460d-9dc7-efc2d046d290
+      source: KONG_KONNECT
+      tags:
+      - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+      - migrated-by:forgeshift-wso2-migrator
+      - pci
+      - tokenization
+      - vault
+      updated_at: 1789395504
+    - config:
+        add:
+          body: []
+          headers: []
+          querystring: []
+        append:
+          body: []
+          headers: []
+          querystring: []
+        remove:
+          body: []
+          headers: []
+          querystring: []
+        rename:
+          body: []
+          headers: []
+          querystring: []
+        replace:
+          body: []
+          headers: []
+          querystring: []
+          uri: /v1/tokens/$(uri_captures.token)
+      created_at: 1789395504
+      enabled: true
+      id: ef285fd6-6d43-4b9d-9c67-aa97f6210c53
+      name: request-transformer
+      protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+      route:
+        id: 69e8fc3b-a6f8-460d-9dc7-efc2d046d290
+      source: KONG_KONNECT
+      tags:
+      - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+      - migrated-by:forgeshift-wso2-migrator
+      - pci
+      - tokenization
+      - vault
+      updated_at: 1789395504
+  - created_at: 1789395504
+    https_redirect_status_code: 426
+    id: 732839f8-cf95-426f-b74a-749f216debba
+    methods:
+    - GET
+    name: cardtokenizationapi-1-0-0--gettokens-token
+    path_handling: v0
+    paths:
+    - ~/pci/tokens/1\.0\.0/tokens/(?<token>[^/]+)$
+    preserve_host: false
+    protocols:
+    - https
+    regex_priority: 0
+    request_buffering: true
+    response_buffering: true
+    service:
+      id: 01a64e23-57cb-4f8f-8cef-d42d1d57acac
+    source: KONG_KONNECT
+    strip_path: false
+    tags:
+    - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+    - migrated-by:forgeshift-wso2-migrator
+    - pci
+    - tokenization
+    - vault
+    - wso2-resource:_tokens_{token}
+    - wso2-verb:GET
+    updated_at: 1789395504
+    plugins:
+    - config:
+        allow:
+        - wso2-api:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+        always_use_authenticated_groups: false
+        hide_groups_header: true
+        include_consumer_groups: false
+      created_at: 1789395504
+      enabled: true
+      id: d6d1cc80-81da-4390-978c-1d6c1586a539
+      name: acl
+      protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+      route:
+        id: 732839f8-cf95-426f-b74a-749f216debba
+      source: KONG_KONNECT
+      tags:
+      - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+      - migrated-by:forgeshift-wso2-migrator
+      - pci
+      - tokenization
+      - vault
+      updated_at: 1789395504
+    - config:
+        add:
+          body: []
+          headers: []
+          querystring: []
+        append:
+          body: []
+          headers: []
+          querystring: []
+        remove:
+          body: []
+          headers: []
+          querystring: []
+        rename:
+          body: []
+          headers: []
+          querystring: []
+        replace:
+          body: []
+          headers: []
+          querystring: []
+          uri: /v1/tokens/$(uri_captures.token)
+      created_at: 1789395504
+      enabled: true
+      id: e44dbfd2-11f8-434e-96ad-e44f900f3fa1
+      name: request-transformer
+      protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+      route:
+        id: 732839f8-cf95-426f-b74a-749f216debba
+      source: KONG_KONNECT
+      tags:
+      - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+      - migrated-by:forgeshift-wso2-migrator
+      - pci
+      - tokenization
+      - vault
+      updated_at: 1789395504
+  - created_at: 1789395504
+    https_redirect_status_code: 426
+    id: 78f5a444-f85f-4ff6-8202-9a0bb6a6119a
+    methods:
+    - POST
+    name: cardtokenizationapi-1-0-0--posttokens-token-detokenize
+    path_handling: v0
+    paths:
+    - ~/pci/tokens/1\.0\.0/tokens/(?<token>[^/]+)/detokenize$
+    preserve_host: false
+    protocols:
+    - https
+    regex_priority: 0
+    request_buffering: true
+    response_buffering: true
+    service:
+      id: 01a64e23-57cb-4f8f-8cef-d42d1d57acac
+    source: KONG_KONNECT
+    strip_path: false
+    tags:
+    - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+    - migrated-by:forgeshift-wso2-migrator
+    - pci
+    - tokenization
+    - vault
+    - wso2-resource:_tokens_{token}_detokenize
+    - wso2-verb:POST
+    updated_at: 1789395504
+    plugins:
+    - config:
+        allow:
+        - wso2-api:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+        always_use_authenticated_groups: false
+        hide_groups_header: true
+        include_consumer_groups: false
+      created_at: 1789395504
+      enabled: true
+      id: 1c76c88d-c8f5-444f-99ce-8813bf027523
+      name: acl
+      protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+      route:
+        id: 78f5a444-f85f-4ff6-8202-9a0bb6a6119a
+      source: KONG_KONNECT
+      tags:
+      - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+      - migrated-by:forgeshift-wso2-migrator
+      - pci
+      - tokenization
+      - vault
+      updated_at: 1789395504
+    - config:
+        add:
+          body: []
+          headers: []
+          querystring: []
+        append:
+          body: []
+          headers: []
+          querystring: []
+        remove:
+          body: []
+          headers: []
+          querystring: []
+        rename:
+          body: []
+          headers: []
+          querystring: []
+        replace:
+          body: []
+          headers: []
+          querystring: []
+          uri: /v1/tokens/$(uri_captures.token)/detokenize
+      created_at: 1789395504
+      enabled: true
+      id: 40edd6d2-58f7-492e-b4f8-6df4bfdbbf99
+      name: request-transformer
+      protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+      route:
+        id: 78f5a444-f85f-4ff6-8202-9a0bb6a6119a
+      source: KONG_KONNECT
+      tags:
+      - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+      - migrated-by:forgeshift-wso2-migrator
+      - pci
+      - tokenization
+      - vault
+      updated_at: 1789395504
+    - config:
+        error_code: 429
+        error_message: API rate limit exceeded
+        fault_tolerant: true
+        hide_client_headers: false
+        limit_by: consumer
+        minute: 20
+        policy: local
+        redis:
+          database: 0
+          port: 6379
+          ssl: false
+          ssl_verify: false
+          timeout: 2000
+        redis_database: 0
+        redis_port: 6379
+        redis_ssl: false
+        redis_ssl_verify: false
+        redis_timeout: 2000
+        sync_rate: -1
+      created_at: 1789395504
+      enabled: true
+      id: 673a6883-7254-4e8d-a6be-03eccc6c5617
+      name: rate-limiting
+      protocols:
+      - grpc
+      - grpcs
+      - http
+      - https
+      route:
+        id: 78f5a444-f85f-4ff6-8202-9a0bb6a6119a
+      source: KONG_KONNECT
+      tags:
+      - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+      - migrated-by:forgeshift-wso2-migrator
+      - pci
+      - tokenization
+      - vault
+      - wso2-tier:SensitiveActionGuard
+      updated_at: 1789395504
+  plugins:
+  - config:
+      claims_to_verify:
+      - exp
+      cookie_names: []
+      header_names:
+      - authorization
+      key_claim_name: azp
+      maximum_expiration: 0
+      run_on_preflight: true
+      uri_param_names:
+      - jwt
+    created_at: 1789395504
+    enabled: true
+    id: 019c84c5-e598-4d64-bce5-7ceeb2dfc257
+    name: jwt
+    protocols:
+    - grpc
+    - grpcs
+    - http
+    - https
+    service:
+      id: 01a64e23-57cb-4f8f-8cef-d42d1d57acac
+    source: KONG_KONNECT
+    tags:
+    - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+    - migrated-by:forgeshift-wso2-migrator
+    - pci
+    - tokenization
+    - vault
+    updated_at: 1789395504
+  - config:
+      error_code: 429
+      error_message: API rate limit exceeded
+      fault_tolerant: true
+      hide_client_headers: false
+      limit_by: consumer
+      minute: 100000
+      policy: local
+      redis:
+        database: 0
+        port: 6379
+        ssl: false
+        ssl_verify: false
+        timeout: 2000
+      redis_database: 0
+      redis_port: 6379
+      redis_ssl: false
+      redis_ssl_verify: false
+      redis_timeout: 2000
+      sync_rate: -1
+    created_at: 1789395504
+    enabled: true
+    id: d5e12777-45b0-47a5-aedb-bce8f08f44ff
+    name: rate-limiting
+    protocols:
+    - grpc
+    - grpcs
+    - http
+    - https
+    service:
+      id: 01a64e23-57cb-4f8f-8cef-d42d1d57acac
+    source: KONG_KONNECT
+    tags:
+    - wso2-source-id:134e42f1-303b-42eb-84c7-1e9911b4c4bb
+    - migrated-by:forgeshift-wso2-migrator
+    - pci
+    - tokenization
+    - vault
+    - wso2-tier:AldermoorInternal
+    updated_at: 1789395504
+plugins:
+- config:
+    access:
+    - |
+      -- Apigee path rewrite (apigee-kong-migrator)
+      local route        = kong.router.get_route()
+      local service      = kong.router.get_service()
+      local service_path = (service and service.path) or "/"
+      -- Check for apigee-strip-len tag set on suffix routes during migration
+      local strip_len = nil
+      if route and route.tags then
+        for _, tag in ipairs(route.tags) do
+          if tag:sub(1, 17) == "apigee-strip-len:" then
+            strip_len = tonumber(tag:sub(18))
+            break
+          end
+        end
+      end
+      -- Fall back to route path length if no tag (covers normal routes)
+      if not strip_len then
+        local route_path = (route and route.paths and route.paths[1]) or "/"
+        if route_path:sub(1, 1) == "~" then route_path = route_path:sub(2) end
+        strip_len = #route_path
+      end
+      local incoming = kong.request.get_path()
+      local suffix = "/"
+      if #incoming >= strip_len then
+        suffix = incoming:sub(strip_len + 1)
+      end
+      if suffix == "" then suffix = "/" end
+      local clean_target = service_path:gsub("/+$", "")
+      if suffix:sub(1, 1) ~= "/" then suffix = "/" .. suffix end
+      kong.service.request.set_path(clean_target .. suffix)
+    body_filter: []
+    certificate: []
+    functions: []
+    header_filter: []
+    log: []
+    rewrite: []
+    ws_client_frame: []
+    ws_close: []
+    ws_handshake: []
+    ws_upstream_frame: []
+  created_at: 1790076421
+  enabled: true
+  id: 3ca01165-5e1c-4f82-adba-16cf9582a31f
+  name: pre-function
+  protocols:
+  - grpc
+  - grpcs
+  - http
+  - https
+  source: KONG_KONNECT
+  tags:
+  - global
+  - apigee-path-rewrite
+  updated_at: 1790938548
+upstreams: []
